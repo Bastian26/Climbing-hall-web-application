@@ -2,6 +2,7 @@ package com.example.kletterhalle.domains.climbingRoute.dto;
 
 import com.example.kletterhalle.domains.climbingRoute.model.DifficultyLevelEnum;
 import com.example.kletterhalle.domains.member.model.Member;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.util.Set;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class ClimbingRouteDto {
     private Long id;
     private String name;
