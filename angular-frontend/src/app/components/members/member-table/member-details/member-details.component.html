@@ -1,0 +1,23 @@
+<mat-card
+  class="example-card"
+  *ngIf="member !== undefined && member.addressDto !== undefined"
+  class="mat-elevation-z10"
+>
+  <mat-card-subtitle>Id: {{ member.id }}</mat-card-subtitle>
+  <mat-card-title>{{ member.firstName }} {{ member.lastName }}</mat-card-title>
+  <br />
+  <mat-card-content>
+    <p>
+      {{ member.addressDto.street }} {{ member.addressDto.houseNumber }},
+      {{ member.addressDto.postCode }}
+    </p>
+  </mat-card-content>
+  <mat-divider inset></mat-divider>
+  <br />
+  <br />
+  <mat-card-title>Favourite Routes:</mat-card-title>
+  <br />
+  <div class="mat-card-content" *ngFor="let route of member.favouriteRoutes">
+    <p>- {{ route.name }} || {{ route.difficultyLevelEnum }}</p>
+  </div>
+</mat-card>

@@ -1,0 +1,51 @@
+h2 {
+  font-size: 1.3rem;
+  width: 60%;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  color: darkred;
+}
+
+mat-divider {
+  width: 30%;
+  display: flex;
+  margin: 0px auto 20px auto;
+  background-color: darkred;
+}
+.example-card {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+
+  button {
+    font-size: 1.2rem;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  mat-card-title {
+    font-size: 2rem;
+    margin-top: 13px;
+    margin-bottom: 40px;
+  }
+
+  mat-divider {
+    width: 95%;
+    background-color: darkgrey;
+    margin-left: 10px;
+    margin-top: -10px;
+  }
+
+  mat-card-subtitle {
+    font-size: 1.4rem;
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  p {
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,23 @@
+mat-list *:not(.add-route-btn) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+}
+
+button {
+  margin: 10px auto;
+  display: flex;
+  align-self: center;
+}
+
+.add-route-btn {
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 38px;
+  cursor: pointer;
+ margin-top: 40px;
+}

@@ -1,0 +1,13 @@
+<button mat-raised-button class="add-route-btn" routerLink="/routesAddForm">
+  + Add
+</button>
+<mat-list>
+  <mat-list-item *ngFor="let route of routes$ | async" role="listitem">
+    <app-route
+      [route]="route"
+      [currentMember]="currentMember"
+      (refreshParentRoutes)="refreshRoutesComponent()"
+      >></app-route
+    >
+  </mat-list-item>
+</mat-list>

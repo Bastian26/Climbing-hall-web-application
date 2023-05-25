@@ -1,0 +1,18 @@
+<div class="route-details-wrapper">
+  <h2>Route Details</h2>
+  <mat-divider></mat-divider>
+</div>
+
+<div *ngIf="route">
+  <mat-card class="example-card">
+    <mat-card-title>{{ route.name}}</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-subtitle>Difficulty level:</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{ route.difficultyLevelEnum }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button routerLink="/routes">Back</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

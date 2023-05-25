@@ -1,0 +1,58 @@
+<h2>Add Route</h2>
+<mat-divider></mat-divider>
+<form [formGroup]="addRouteForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Route name</mat-label>
+    <input
+      class="input-name-field"
+      formControlName="routeName"
+      matInput
+      required
+    />
+  </mat-form-field>
+
+  <ng-container *ngIf="addRouteForm.controls['routeName'] as routeName">
+    <ng-container *ngIf="routeName.dirty || routeName.touched">
+      <p class="error" *ngIf='routeName.errors?.["required"]'>
+        Es muss ein RoutenName eingegeben werden
+      </p>
+      <p class="error" *ngIf='routeName.errors?.["minlength"]'>
+        Es muss müssen mindestens 3 Buchstaben eingegeben werden
+      </p>
+    </ng-container>
+  </ng-container>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Difficulty</mat-label>
+    <mat-select formControlName="difficultyLevel">
+      <mat-option *ngFor="let difficulty of Difficulty" [value]="difficulty">{{
+        difficulty
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <ng-container *ngIf="addRouteForm.controls['difficultyLevel'] as routeName">
+    <ng-container *ngIf="routeName.dirty || routeName.touched">
+      <ng-container *ngIf="addRouteForm.controls['routeName'] as errors">
+        <p class="error" *ngIf="routeName.errors">
+          Es muss ein Schwierigkeitsgrad eingegeben werden
+        </p>
+        <!--          <p>{{ routeName.errors | json}}</p>-->
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <div class="button-wrapper">
+    <button
+      mat-button
+      class="send-btn"
+      [disabled]="
+        !(addRouteForm.valid && (addRouteForm.dirty || addRouteForm.touched))
+      "
+      (click)="addRoute()"
+    >
+      Send
+    </button>
+    <button mat-button class="back-btn" routerLink="/routes">Back</button>
+  </div>
+</form>

@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 20px;
+}
+
+th.mat-header-cell {
+  text-align: left;
+  max-width: 300px;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-icon-button {
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-bottom: 0px;
+}
+
+.filter-input {
+  margin-left: 75px;
+
+}

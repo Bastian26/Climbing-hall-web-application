@@ -1,0 +1,10 @@
+<mat-card class="route" fxFlex.xs="350px" fxFlex.sm="400px" fxFlex.md="600px" fxFlex="1200px">
+  <span class="name-wrapper">
+    <mat-icon class="info" [routerLink]="['/routeDetails', route?.id]">info</mat-icon>
+    <mat-icon class="favorite" [style.color]="containsFavorite ? '#fe2c54' : 'darkgrey'" (click)="toggleFavoriteRoute()">favorite</mat-icon>
+    <span class="name">{{ route?.name }}</span>
+  </span>
+  <button *ngIf="route" mat-icon-button color="warn" (click)="deleteRoute(route)">
+    <mat-icon class="delete-sign">delete</mat-icon>
+  </button>
+</mat-card>
