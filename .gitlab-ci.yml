@@ -6,9 +6,9 @@ stages:
   - frontend_test
   - backend_test
 
-variables:
+#variables:
   # Definiere hier eventuelle Umgebungsvariablen, die in den Jobs verwendet werden sollen
-  CHROME_BIN: "/usr/bin/google-chrome"
+  # CHROME_BIN: "/usr/bin/google-chrome"
 
 before_script:
   - apt-get update -qy
@@ -39,9 +39,9 @@ frontend_test:
   stage: frontend_test
   script:
     - cd angular-frontend
-    - export CHROME_BIN=chromium-browser
+    #- export CHROME_BIN=chromium-browser
     - npm install
-    - npx ng test 
+    - npx ng test --watch=false --code-coverage=true --single-run=true --browsers=ChromeHeadless
   only:
     - dev
 
