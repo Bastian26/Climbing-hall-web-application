@@ -1,6 +1,7 @@
 image: node:14  # Hier Node.js-Image mit gewünschter Version
 
 stages:
+  - install 
   - frontend_build
   - backend_build
   - frontend_test
