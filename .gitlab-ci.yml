@@ -12,8 +12,7 @@ variables:
 before_script:
   - apt-get update -qy
   - apt-get install -y nodejs npm
-  - npm install -g n
-  - n latest 
+  - npm install -g npm
 
 frontend_build:
   stage: frontend_build
