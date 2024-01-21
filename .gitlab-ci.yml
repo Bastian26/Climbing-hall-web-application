@@ -14,6 +14,18 @@ before_script:
   - apt-get install -y curl
   - apt-get install -y openjdk-11-jdk  # JDK-Installation für alle Jobs
 
+install-dependencies:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    expire_in: 1hr
+    paths:
+      - node_modules/
+  cache:
+    paths:
+      - node_modules/
+
 frontend_build:
   stage: frontend_build
   script:
@@ -35,10 +47,14 @@ backend_build:
 
 frontend_test:
   stage: frontend_test
+  dependencies:
+    - install-dependencies
   script:
-    - cd angular-frontend
-    - npm install
-    - npx ng test --configuration=production
+    - npm run test:ci
+  #script:
+  #  - cd angular-frontend
+  #  - npm install
+  #  - npx ng test --configuration=production
   only:
     - dev
 
