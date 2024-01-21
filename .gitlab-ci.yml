@@ -1,4 +1,4 @@
-image: openjdk:11-jdk
+image: node:14  # Hier Node.js-Image mit gewünschter Version
 
 stages:
   - frontend_build
@@ -11,20 +11,22 @@ variables:
 
 before_script:
   - apt-get update -qy
-  - apt-get install -y nodejs npm
-  - npm install -g npm
+  - apt-get install -y curl
 
 frontend_build:
   stage: frontend_build
   script:
     - cd angular-frontend
     - npm install
-    - ng build --prod
+    - npx ng build --prod  # npx wird verwendet, um lokal installierte npm-Pakete auszuführen
   only:
     - dev
 
 backend_build:
   stage: backend_build
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y openjdk-11-jdk
   script:
     - cd spring-boot-backend
     - ./mvnw clean install
@@ -36,12 +38,15 @@ frontend_test:
   script:
     - cd angular-frontend
     - npm install
-    - ng test
+    - npx ng test
   only:
     - dev
 
 backend_test:
   stage: backend_test
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y openjdk-11-jdk
   script:
     - cd spring-boot-backend
     - ./mvnw test
