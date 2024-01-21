@@ -19,7 +19,8 @@ frontend_build:
   script:
     - cd angular-frontend
     - npm install
-    - npx ng build --prod  # npx wird verwendet, um lokal installierte npm-Pakete auszuführen
+    - npx ng build --configuration=production
+
   only:
     - dev
 
