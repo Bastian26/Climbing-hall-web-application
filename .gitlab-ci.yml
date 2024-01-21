@@ -1,3 +1,5 @@
+image: adoptopenjdk:11-jdk-hotspot
+
 stages:
   - frontend_build
   - backend_build
@@ -10,6 +12,8 @@ variables:
 frontend_build:
   stage: frontend_build
   script:
+    - apt-get update -qy
+    - apt-get install -y nodejs npm
     - cd angular-frontend
     - npm install
     - ng build --prod
@@ -27,6 +31,8 @@ backend_build:
 frontend_test:
   stage: frontend_test
   script:
+    - apt-get update -qy
+    - apt-get install -y nodejs npm
     - cd angular-frontend
     - npm install
     - ng test
