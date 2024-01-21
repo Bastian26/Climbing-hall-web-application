@@ -8,11 +8,13 @@ stages:
 
 variables:
   # Definiere hier eventuelle Umgebungsvariablen, die in den Jobs verwendet werden sollen
+  CHROME_BIN: "/usr/bin/google-chrome"
 
 before_script:
   - apt-get update -qy
   - apt-get install -y curl
   - apt-get install -y openjdk-11-jdk  # JDK-Installation für alle Jobs
+  - apt-get install -y google-chrome-stable
 
 frontend_build:
   stage: frontend_build
@@ -37,6 +39,7 @@ frontend_test:
   stage: frontend_test
   script:
     - cd angular-frontend
+    - export CHROME_BIN=chromium-browser
     - npm install
     - npx ng test 
   only:
