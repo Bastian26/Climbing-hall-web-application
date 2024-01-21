@@ -15,6 +15,7 @@ frontend_build:
     - apt-get update -qy
     - apt-get install -y nodejs npm
     - cd angular-frontend
+    - npm install -g @angular/cli
     - npm install
     - ng build --prod
   only:
