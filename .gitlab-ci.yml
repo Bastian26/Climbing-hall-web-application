@@ -12,6 +12,7 @@ variables:
 before_script:
   - apt-get update -qy
   - apt-get install -y curl
+  - apt-get install -y openjdk-11-jdk  # JDK-Installation für alle Jobs
 
 frontend_build:
   stage: frontend_build
@@ -24,9 +25,6 @@ frontend_build:
 
 backend_build:
   stage: backend_build
-  before_script:
-    - apt-get update -qy
-    - apt-get install -y openjdk-11-jdk
   script:
     - cd spring-boot-backend
     - ./mvnw clean install
@@ -44,9 +42,6 @@ frontend_test:
 
 backend_test:
   stage: backend_test
-  before_script:
-    - apt-get update -qy
-    - apt-get install -y openjdk-11-jdk
   script:
     - cd spring-boot-backend
     - ./mvnw test
