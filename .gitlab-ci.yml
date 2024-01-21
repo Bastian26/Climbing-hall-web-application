@@ -14,7 +14,7 @@ before_script:
   - apt-get update -qy
   - apt-get install -y curl
   - apt-get install -y openjdk-11-jdk  # JDK-Installation für alle Jobs
-  - apt-get install -y google-chrome-stable
+  #- apt-get install -y google-chrome-stable
 
 frontend_build:
   stage: frontend_build
