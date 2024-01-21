@@ -1,4 +1,4 @@
-image: adoptopenjdk:11-jdk-hotspot
+image: node:18
 
 stages:
   - frontend_build
@@ -7,18 +7,18 @@ stages:
   - backend_test
 
 variables:
-  # Define any environment variables to be used in the jobs
+  # Env vars for jobs
 
 before_script:
   - apt-get update -qy
-  - apt-get install -y nodejs npm
-  - npm install -g @angular/cli
+  - apt-get install -y openjdk-11-jdk
 
 frontend_build:
   stage: frontend_build
   script:
-    - apt-get update -qy
     - cd angular-frontend
+    - npm install -g @angular/cli
+    - npm install
     - ng build --prod
   only:
     - dev
@@ -35,6 +35,8 @@ frontend_test:
   stage: frontend_test
   script:
     - cd angular-frontend
+    - npm install -g @angular/cli
+    - npm install
     - ng test
   only:
     - dev
