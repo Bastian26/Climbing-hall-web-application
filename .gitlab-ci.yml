@@ -1,31 +1,20 @@
 image: node:14  # Hier Node.js-Image mit gewünschter Version
 
 stages:
-  - install 
   - frontend_build
   - backend_build
   - frontend_test
   - backend_test
 
-variables:
+#variables:
   # Definiere hier eventuelle Umgebungsvariablen, die in den Jobs verwendet werden sollen
+  # CHROME_BIN: "/usr/bin/google-chrome"
 
 before_script:
   - apt-get update -qy
   - apt-get install -y curl
   - apt-get install -y openjdk-11-jdk  # JDK-Installation für alle Jobs
-
-install-dependencies:
-  stage: install
-  script:
-    - npm install
-  artifacts:
-    expire_in: 1hr
-    paths:
-      - node_modules/
-  cache:
-    paths:
-      - node_modules/
+  #- apt-get install -y google-chrome-stable
 
 frontend_build:
   stage: frontend_build
@@ -48,14 +37,11 @@ backend_build:
 
 frontend_test:
   stage: frontend_test
-  dependencies:
-    - install-dependencies
   script:
-    - npm run test:ci
-  #script:
-  #  - cd angular-frontend
-  #  - npm install
-  #  - npx ng test --configuration=production
+    - cd angular-frontend
+    #- export CHROME_BIN=chromium-browser
+    - npm install
+    - npx ng test --watch=false --browsers=ChromeHeadless
   only:
     - dev
 
