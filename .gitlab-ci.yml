@@ -1,0 +1,34 @@
+stages:
+  - frontend_build
+  - backend_build
+  - frontend_test
+  - backend_test
+
+variables:
+  # Definiere hier eventuelle Umgebungsvariablen, die in den Jobs verwendet werden sollen
+
+frontend_build:
+  stage: frontend_build
+  script:
+    - cd angular-frontend
+    - npm install
+    - ng build --prod
+
+backend_build:
+  stage: backend_build
+  script:
+    - cd spring-boot-backend
+    - ./mvnw clean install
+
+frontend_test:
+  stage: frontend_test
+  script:
+    - cd angular-frontend
+    - npm install
+    - ng test
+
+backend_test:
+  stage: backend_test
+  script:
+    - cd spring-boot-backend
+    - ./mvnw test
