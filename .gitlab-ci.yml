@@ -1,4 +1,4 @@
-image: node:18
+image: openjdk:11-jdk
 
 stages:
   - frontend_build
@@ -7,17 +7,17 @@ stages:
   - backend_test
 
 variables:
-  # Env vars for jobs
+  # Definiere hier eventuelle Umgebungsvariablen, die in den Jobs verwendet werden sollen
 
 before_script:
   - apt-get update -qy
-  - apt-get install -y openjdk-11-jdk
+  - apt-get install -y nodejs npm
+  - npm install -g @angular/cli
 
 frontend_build:
   stage: frontend_build
   script:
     - cd angular-frontend
-    - npm install -g @angular/cli
     - npm install
     - ng build --prod
   only:
@@ -35,7 +35,6 @@ frontend_test:
   stage: frontend_test
   script:
     - cd angular-frontend
-    - npm install -g @angular/cli
     - npm install
     - ng test
   only:
