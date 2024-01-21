@@ -28,6 +28,7 @@ backend_build:
   stage: backend_build
   script:
     - cd spring-boot-backend
+    - chmod +x mvnw
     - ./mvnw clean install
   only:
     - dev
